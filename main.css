@@ -107,15 +107,17 @@ body.body--dark .q-menu {
       background: var(--textDefault);
     }
   }
+
+  [sfc-name="MojavePlayer"] {
+    padding: 0em 0em 0.5em 0em;
+    /* padding: 0.1em 1em; */
+    display: grid;
+    align-items: center;
+    border-top: 1px solid var(--chrome-lines);
+  }
 }
 
-[sfc-name="MojavePlayer"] {
-  padding: 0em 0em 0.5em 0em;
-  /* padding: 0.1em 1em; */
-  display: grid;
-  align-items: center;
-  border-top: 1px solid var(--chrome-lines);
-}
+
 
 [sfc-name="LCDPlayer"] {
   height: 120px;
@@ -210,95 +212,97 @@ body.body--dark .q-menu {
   }
 }
 
-[sfc-name="MojavePlayer"][player-type="glass"],
-[sfc-name="LCDPlayerGlass"][player-type="glass"] {
-  --artworkSize: 80px;
-  background: var(--winui-background);
-  padding-bottom: 0.5rem;
-  max-width: 100%;
-  border-top: 1px solid var(--chrome-lines);
+#app-viewport {
+  [sfc-name="MojavePlayer"][player-type="glass"],
+  [sfc-name="LCDPlayerGlass"][player-type="glass"] {
+    --artworkSize: 80px;
+    background: var(--winui-background);
+    padding-bottom: 0.5rem;
+    max-width: 100%;
+    border-top: 1px solid var(--chrome-lines);
 
-  .lcdPlayer {
-    display: grid;
-    grid-template-areas: "lcdplayer-info lcdplayer-controls lcdplayer-side";
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 0em 0.5em;
-    height: var(--artworkSize);
-  }
-  .lcd-player-glass-progress {
-    padding: 8px 0px 12px;
-  }
-
-  .player-info {
-    display: grid;
-    align-items: center;
-  }
-
-  .lcd-info {
-    padding: 0;
-    gap: 2em;
-    margin-left: 1em;
-
-    .song-name {
-      font-size: 20px;
-      line-height: 1.2;
+    .lcdPlayer {
+      display: grid;
+      grid-template-areas: "lcdplayer-info lcdplayer-controls lcdplayer-side";
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0em 0.5em;
+      height: var(--artworkSize);
+    }
+    .lcd-player-glass-progress {
+      padding: 8px 0px 12px;
     }
 
-    .release-info {
-      font-size: 14px;
-      line-height: 1.6;
+    .player-info {
+      display: grid;
+      align-items: center;
     }
-  }
 
-  .item-actions {
-    position: absolute;
-    right: 8rem;
-    gap: 0.3rem;
-    opacity: 0.8;
-  }
+    .lcd-info {
+      padding: 0;
+      gap: 2em;
+      margin-left: 1em;
 
-  .amp-lcd-container {
-    margin: 0;
-    height: var(--artworkSize);
+      .song-name {
+        font-size: 20px;
+        line-height: 1.2;
+      }
 
-    .player {
-      background: unset;
-      box-shadow: unset;
-      height: 100%;
-      grid-template-columns: 80px 1fr;
-
-      .player-artwork {
-        width: var(--artworkSize);
-        height: var(--artworkSize);
+      .release-info {
+        font-size: 14px;
+        line-height: 1.6;
       }
     }
-  }
 
-  .lcdplayer-info {
-    left: 50%;
-  }
+    .item-actions {
+      position: absolute;
+      right: 8rem;
+      gap: 0.3rem;
+      opacity: 0.8;
+    }
 
-  .lcdplayer-info {
-    width: 100%;
-    max-width: 100%;
-  }
+    .amp-lcd-container {
+      margin: 0;
+      height: var(--artworkSize);
 
-  .lcdplayer-controls {
-    justify-content: center;
-    width: 100%;
-    position: initial;
-  }
+      .player {
+        background: unset;
+        box-shadow: unset;
+        height: 100%;
+        grid-template-columns: 80px 1fr;
 
-  .volume-slider[data-visible="true"] {
-    display: none;
-  }
+        .player-artwork {
+          width: var(--artworkSize);
+          height: var(--artworkSize);
+        }
+      }
+    }
 
-  .volume-popup-container[data-visible="false"] {
-    display: block;
+    .lcdplayer-info {
+      left: 50%;
+    }
 
-    .nav-glyph i {
-      width: 20px;
-      height: 20px;
+    .lcdplayer-info {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .lcdplayer-controls {
+      justify-content: center;
+      width: 100%;
+      position: initial;
+    }
+
+    .volume-slider[data-visible="true"] {
+      display: none;
+    }
+
+    .volume-popup-container[data-visible="false"] {
+      display: block;
+
+      .nav-glyph i {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }
