@@ -1,0 +1,459 @@
+/* theme */
+
+:root {
+  /* --winui-background: rgba(39, 39, 39, 0.5); */
+  --winui-background: rgba(39, 39, 39, 0.2);
+  --winui-background_solid: rgba(39, 39, 39, 1);
+  --chrome-lines: rgb(200 200 200 / 10%);
+}
+
+body.body--light {
+  --winui-background: rgba(255, 255, 255, 0.5);
+  --chrome-lines: rgb(100 100 100 / 40%);
+}
+
+.window-controls {
+  --controlHeight: 32px;
+}
+
+body.body--dark .q-menu {
+  background: var(--winui-background_solid);
+  backdrop-filter: unset;
+  padding: 8px;
+}
+
+@keyframes slideIn2 {
+  0% {
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.q-menu {
+  animation: slideIn2 250ms var(--appleEase);
+}
+
+/* Scoping to main view only */
+#app-viewport { 
+  [sfc-name="AMPlayAction"],
+  [sfc-name="AMPauseAction"] {
+    --orange: #e87226;
+    --red: #c63b80;
+    --purple: #833287;
+    --center: #302a42;
+    border: 0px;
+    background-image: linear-gradient(
+      -220deg,
+      var(--orange) 0%,
+      var(--orange) 20%,
+      var(--red) 60%,
+      var(--purple) 100%
+    );
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    box-shadow: inset 0px 0px 0px 1px rgb(200 200 200 / 20%);
+    display: grid;
+    place-items: center;
+    border-radius: 100%;
+    .play-icon {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      ._svg-icon {
+        --size: 40px;
+        background: white;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      --dist: 4px;
+      top: var(--dist);
+      left: var(--dist);
+      right: var(--dist);
+      bottom: var(--dist);
+      background-color: var(--center);
+      background-size: 38px;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      transition: opacity 0.3s var(--appleEase);
+      display: block;
+      pointer-events: none;
+    }
+  
+    &:active {
+      transition: transform 0s var(--appleEase);
+      transform: scale(0.9);
+  
+      &::after {
+        --dist: 5px;
+      }
+    }
+  }
+  [sfc-name="AMPlaybackActions"] {
+    align-items: center;
+    gap: 0.5em;
+  
+    ._svg-icon {
+      --size: 40px;
+      background: var(--textDefault);
+    }
+  }
+}
+
+
+
+
+[sfc-name="MojavePlayer"] {
+  padding: 0em 0em 0.5em 0em;
+  /* padding: 0.1em 1em; */
+  display: grid;
+  align-items: center;
+  border-top: 1px solid var(--chrome-lines);
+}
+
+[sfc-name="LCDPlayer"] {
+  height: 120px;
+}
+
+[sfc-name="NavigationButton"] {
+  padding-left: 0.7em;
+  height: 36px;
+  border-radius: 5px;
+  gap: 10px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    left: 0;
+    width: 3px;
+    background: var(--musicKeyColor);
+    border-radius: 50px;
+    transition: background 0.3s var(--appleEase);
+    display: none;
+  }
+
+  &.active {
+    background: rgb(200 200 200 / 5%);
+
+    &::before {
+      display: block;
+    }
+  }
+
+  .nav-icon {
+    color: var(--textDefault);
+  }
+}
+
+.new-shell-page-container {
+  background: var(--winui-background);
+  box-shadow: unset;
+  border-left: 1px solid var(--chrome-lines);
+}
+
+.am-expansion-item {
+  padding: 0.2em 1em;
+
+  border-radius: 0;
+  width: 100%;
+
+  .expand-icon-active {
+    opacity: 0;
+    border-bottom: 1px solid #333;
+  }
+  &:hover {
+    .expand-icon-active {
+      opacity: 1;
+    }
+  }
+}
+
+[sfc-name="HeaderSearch"] {
+  .search-box {
+    border: 1px solid rgb(200 200 200 / 0%);
+    border-bottom: 1px solid rgb(250 250 250 / 30%);
+    border-radius: 6px;
+
+    box-shadow: unset;
+    height: 32px;
+    font-size: 1em;
+    body.body--light & {
+      border: 1px solid rgb(100 100 100 / 20%);
+      border-top: 1px solid rgb(100 100 100 / 30%);
+      border-bottom: 1px solid rgb(100 100 100 / 20%);
+      &:focus {
+        border-bottom: 1px solid var(--musicKeyColor);
+      }
+    }
+    &:focus {
+      border-bottom: 1px solid var(--musicKeyColor);
+    }
+  }
+}
+
+[sfc-name="Sidebar"] {
+  .sidebar-scroll-content {
+    padding: 0;
+  }
+  .expansion-items {
+    padding: 0.25em 0.4em;
+  }
+  .expansion-content {
+    padding: 0;
+  }
+}
+
+[sfc-name="MojavePlayer"][player-type="glass"],
+[sfc-name="LCDPlayerGlass"][player-type="glass"] {
+  --artworkSize: 80px;
+  background: var(--winui-background);
+  padding-bottom: 0.5rem;
+  max-width: 100%;
+
+  .lcdPlayer {
+    display: grid;
+    grid-template-areas: "lcdplayer-info lcdplayer-controls lcdplayer-side";
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0em 0.5em;
+    height: var(--artworkSize);
+  }
+  .lcd-player-glass-progress {
+    padding: 8px 0px 12px;
+  }
+
+  .player-info {
+    display: grid;
+    align-items: center;
+  }
+
+  .lcd-info {
+    padding: 0;
+    gap: 2em;
+    margin-left: 1em;
+
+    .song-name {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .release-info {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+
+  .item-actions {
+    position: absolute;
+    right: 8rem;
+    gap: 0.3rem;
+    opacity: 0.8;
+  }
+
+  .amp-lcd-container {
+    margin: 0;
+    height: var(--artworkSize);
+
+    .player {
+      background: unset;
+      box-shadow: unset;
+      height: 100%;
+      grid-template-columns: 80px 1fr;
+
+      .player-artwork {
+        width: var(--artworkSize);
+        height: var(--artworkSize);
+      }
+    }
+  }
+
+  .lcdplayer-info {
+    left: 50%;
+  }
+
+  .lcdplayer-info {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .lcdplayer-controls {
+    justify-content: center;
+    width: 100%;
+    position: initial;
+  }
+
+  .volume-slider[data-visible="true"] {
+    display: none;
+  }
+
+  .volume-popup-container[data-visible="false"] {
+    display: block;
+
+    .nav-glyph i {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+[sfc-name="LCDPlayerTop"],
+[sfc-name="LCDPlayerMavericks"] {
+  height: 74px;
+}
+
+[data-layout-type="mojave"] {
+  .new-shell-page-container {
+    border-radius: 0;
+    margin: 0;
+    padding-top: 50px;
+  }
+
+  .ns-toolbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .ns-sidebar {
+    padding-top: 50px;
+    [sfc-name="Sidebar"] {
+      padding-top: 50px;
+    }
+  }
+}
+
+.ns-toolbar .chrome-top {
+  .chrome-button {
+  }
+}
+
+[sfc-name="AMPMetadataMojave"] {
+  [sfc-name="QIcon"].ion-ios-star {
+    display: none;
+
+    .al-badge & {
+      display: none;
+    }
+  }
+}
+
+[sfc-name="AMProgressBar"] {
+  .overlay-progress {
+    display: none;
+  }
+  .volumeBar {
+    input[type="range"] {
+      opacity: 1;
+      --progressColor: var(--musicKeyColor);
+
+      &::-webkit-slider-thumb {
+        --size: 20px;
+        --dotSize: 5px;
+        width: var(--size);
+        height: var(--size);
+        background-image: radial-gradient(
+          circle at center,
+          var(--musicKeyColor) var(--dotSize),
+          #454545 calc(var(--dotSize) + 1px)
+        );
+
+        &:hover {
+          --dotSize: 6px;
+        }
+      }
+    }
+  }
+}
+
+[data-layout-type="mojave"] {
+  [right-drawer="true"] {
+    .ns-toolbar {
+      right: var(--rightSidebarWidth);
+      --windowControlWidth: 0.5rem;
+    }
+  }
+  [left-drawer="true"] {
+    .ns-toolbar {
+      right: var(--rightSidebarWidth);
+      --windowControlWidth: 0.5rem;
+    }
+  }
+}
+
+[sfc-name="BackNavButton"] {
+  font: normal normal normal 16px/1 codicon;
+  margin-right: 1.25em;
+
+  [sfc-name="NIcon"] {
+    display: none;
+  }
+
+  &:after {
+    content: "\ea9b";
+    font-size: 20px;
+    transition: transform 0.2s var(--appleEase);
+    transform-origin: right;
+  }
+
+  &:active {
+    &:after {
+      transform: scaleX(1.2);
+      transition: transform 0.1s var(--appleEase);
+    }
+  }
+}
+
+[sfc-name="ForwardNavButton"] {
+  display: none;
+}
+
+.volume-slider {
+  overflow: visible;
+}
+
+.chrome-button:before {
+  transition: all 0.3s var(--appleEase);
+
+  &:hover {
+    transition: all 0.05s var(--appleEase);
+  }
+}
+
+[sfc-name="AMVolumeSlider"] {
+  .overlay-progress {
+    display: none;
+  }
+
+  .volume-range {
+    opacity: 1;
+    --progressColor: var(--musicKeyColor);
+    &::-webkit-slider-thumb {
+      --size: 20px;
+      --dotSize: 5px;
+      width: var(--size);
+      height: var(--size);
+      background-image: radial-gradient(
+        circle at center,
+        var(--musicKeyColor) var(--dotSize),
+        #454545 calc(var(--dotSize) + 1px)
+      );
+
+      &:hover {
+        --dotSize: 6px;
+      }
+    }
+  }
+}
+
+[sfc-name="ModalTitleBar"] {
+}

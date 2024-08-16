@@ -1,0 +1,11 @@
+name: Groovy
+author: booploops
+repo: https://github.com/booploops/Cider2GroovyTheme
+version: 0.0.4
+stylesheets:
+  - file: main.css
+    name: Groovy Theme
+    description: Theme heavily inspired by Groove Music and Media Player found on Windows 10/11.
+  - file: round-viewport.css
+    name: Round Viewport
+    description: Use the rounded look for the Mojave style

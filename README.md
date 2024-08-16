@@ -1,1 +1,1 @@
-# Cider2GroovyTheme
+# Groovy for [Cider 2](https://cider.sh/)
