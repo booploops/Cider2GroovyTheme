@@ -37,7 +37,7 @@ body.body--dark .q-menu {
 }
 
 /* Scoping to main view only */
-#app-viewport { 
+#app-viewport {
   [sfc-name="AMPlayAction"],
   [sfc-name="AMPauseAction"] {
     --orange: #e87226;
@@ -88,11 +88,11 @@ body.body--dark .q-menu {
       display: block;
       pointer-events: none;
     }
-  
+
     &:active {
       transition: transform 0s var(--appleEase);
       transform: scale(0.9);
-  
+
       &::after {
         --dist: 5px;
       }
@@ -101,16 +101,13 @@ body.body--dark .q-menu {
   [sfc-name="AMPlaybackActions"] {
     align-items: center;
     gap: 0.5em;
-  
+
     ._svg-icon {
       --size: 40px;
       background: var(--textDefault);
     }
   }
 }
-
-
-
 
 [sfc-name="MojavePlayer"] {
   padding: 0em 0em 0.5em 0em;
@@ -219,6 +216,7 @@ body.body--dark .q-menu {
   background: var(--winui-background);
   padding-bottom: 0.5rem;
   max-width: 100%;
+  border-top: 1px solid var(--chrome-lines);
 
   .lcdPlayer {
     display: grid;
